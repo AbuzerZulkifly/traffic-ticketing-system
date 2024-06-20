@@ -5,21 +5,31 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   include 'connect.php';
   $email = $_POST['email'];
   $password = $_POST['password'];
-  $user_type = $_POST['user_type'];
-
 
   $sql = "select * from `login` where email = '$email' and password = '$password'";
   $result = mysqli_query($con,$sql);
+  $row = mysqli_fetch_array($result);
+  
   if ($result) {
     $num=mysqli_num_rows($result);
     if($num>0){
       $login = 1;
-      if ($user_type==='admin'){
-        echo'user';
-      }else {
-      echo 'admin';
+      if($row["user_type"]=="user") {
+        session_start();
+        $_SESSION['user_type']='user';
+        header('location:../../users/civilian.php');
       }
+      else if($row["user_type"]== "admin") {
+      session_start();
+      $_SESSION['user_type']='admin';
+      header('location:../../users/admin.php');
     }
+    else {
+      session_start();
+      $_SESSION['user_type']='police';
+      header('location:../../users/police.php');
+    }
+  }
     else{
      $invalid = 1;
     }
@@ -63,18 +73,21 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   }
   ?>
 
-  <div class="container-md px-4 mt-5">
+  <div class="container-sm mt-5 p-5 ml-auto">
     
-  <form action="login.php" method="post">
+  <form action="login.php" method="post" class="ml-auto">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control" name="email" placeholder="Enter email">
+    <input type="email" class="form-control w-50" name="email" placeholder="Enter email">
   </div>
   <div class="form-group mt-3">
     <label for="password">Password</label>
-    <input type="password" class="form-control" name="password" placeholder="Password">
+    <input type="password" class="form-control w-50" name="password" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-primary mt-3">Login</button>
+  <button type="submit" class="btn btn-primary mt-3 w-50">Login</button>
+ <a href="sign.php"  class="btn bg-success mt-3 w-50">
+ Sign Up
+ </a>
 </form>
     </div>
   </body>

@@ -1,6 +1,7 @@
 <?php
 $user=0;
 $success=0;
+$empty = 0;
 if($_SERVER['REQUEST_METHOD']=='POST'){
   include 'connect.php';
   $f_name = $_POST['f_name'];
@@ -11,18 +12,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   $license_no = $_POST['license_no'];
   $contact_no = $_POST['contact_no'];
 
-  // $sql = "insert into `login` (f_name,l_name,email,password,nic_no,license_no,contact_no) Values ('$f_name','$l_name','$email','$password','$nic_no','$license_no','$contact_no')";
-  
-  // $result = mysqli_query($con, $sql);
-
-  // // if($result){
-  // //   echo "Succesfully Created Account";
-  // // }
-  // // else{
-  // //   die(mysqli_error($con));
-  
-  // //     }
-
+  if ($f_name == '' ||$l_name == ''||$email == ''||$password == ''||$nic_no == ''||$license_no== ''||$contact_no== '') {
+    $empty = 1; 
+  }
+  else {
   $sql = "select * from `login` where email = '$email'";
   $result = mysqli_query($con,$sql);
   if ($result) {
@@ -43,6 +36,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     }
   }
 }
+}
 
 ?>
 
@@ -61,15 +55,18 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
     <title>Sign Up</title>
   </head>
-  <body class="bg-primary">
+  <body class="bg-secondary">
 
   <?php
   if($user) {
     echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>You cannot signup!</strong> User already exists.
-    <button type="button" class="close bg-warning" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+  </div>';
+  }
+  if($empty) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Enter all details to Sign up</strong>
+    
   </div>';
   }
   if ($success) {
@@ -83,7 +80,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 
   ?>
-    <div class="container-md px-4 mt-5 bg-secondary ">
+    <div class="container-md px-4 mt-5 ">
     
   <form class="row g-3" action="sign.php" method="post">
   
@@ -127,7 +124,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 
 <div class="col-md-20 mb-3">  
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary ">Sign Up</button>
+  
+  <a href="login.php" class="btn bg-success ms-5">
+   Go Back
+   </a> 
 </div>
 </form>
     </div>
