@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $empty = 1; 
   }
   else {
-  $sql = "select * from `login` where email = '$email'";
+  $sql = "select * from `login` where email = '$email' or nic_no = '$nic_no'";
   $result = mysqli_query($con,$sql);
   if ($result) {
     $num=mysqli_num_rows($result);

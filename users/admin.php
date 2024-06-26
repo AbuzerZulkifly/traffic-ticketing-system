@@ -1,3 +1,4 @@
+<?php include "../header.php" ?>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,15 +10,6 @@
   <link rel="stylesheet" href="./style/admin.css">
 
 </head>
-<body class="bg-secondary">
-
-<header class="admin-header">
-  <a href="" class="mt-3">Admin Dashboard</a>
-  
-  <div class="logout">
-    <a href=""  class="btn btn-secondary mt-3"> Logout </a>
-  </div>
-</header>
 
 <aside>
 
@@ -31,9 +23,7 @@
       <li>
         <a href="">Paid Fines</a>
       </li>
-      <li>
-        <a href="">Unpaid Fines</a>
-      </li>
+      
       
       
 

@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+
 ul{
   background-color: cadetblue;
   height: 100%;
@@ -32,7 +33,6 @@ a
 a:hover {
   color: white;
 }
-
 .admin-header {
   background-color: rgb(128, 128, 243);
   line-height: 120px;

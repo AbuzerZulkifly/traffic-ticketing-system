@@ -1,6 +1,7 @@
 <?php 
 $success = 0;
 $fail = 0;
+$empty = 0;
 if($_SERVER['REQUEST_METHOD']=='POST'){
   include '../../registration/signup1/connect.php';
   $email = $_POST['email'];
@@ -11,7 +12,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
   $sql = "select * from `login` where email = '$email' or badge_no = '$badge_no'";
   $result = mysqli_query($con,$sql);
-  if ($result) {
+  if($email == '' || $password == '' || $badge_no == ''){
+    $empty = 1;
+  }else{
+   if ($result) {
     $num=mysqli_num_rows($result);
     if($num>0){
       $fail =1;
@@ -28,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     }
   }
 }
-
+}
 
 
 ?>
@@ -66,10 +70,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <a style="color: white;" href="">Add Police</a>
       </li>
       <li>
-        <a href="">Paid Fines</a>
-      </li>
-      <li>
-        <a href="">Unpaid Fines</a>
+        <a href="./paid_fines.php">Fines</a>
       </li>
       
       
@@ -87,6 +88,13 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
   </div>';
   }
+  if($empty) {
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Enter all details to Sign up</strong>
+    
+  </div>';
+  }
+
   if ($fail) {
     echo '<div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Officer already exists</h4>

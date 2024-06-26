@@ -65,12 +65,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <a href="./add_police.php">Add Police</a>
       </li>
       <li>
-        <a href="">Paid Fines</a>
+        <a href="./paid_fines.php">Fines</a>
       </li>
-      <li>
-        <a href="">Unpaid Fines</a>
-      </li>
-      
+  
       
 
     </ul>

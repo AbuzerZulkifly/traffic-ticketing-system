@@ -54,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <title>Log In</title>
   </head>
 
-  <body class="">
+  <body class="bg-secondary">
 
   <?php
   if($login) {
@@ -65,7 +65,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   }
   if ($invalid) {
     echo '<div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Sorry login failed</h4>
+    <h6 class="alert-heading">Sorry login failed</h6>
     <p>Invalid Details.</p>
     <hr>
   </div>
@@ -73,19 +73,19 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   }
   ?>
 
-  <div class="container-sm mt-5 p-5 ml-auto">
+  <div style="margin-left: 350px;  background-color:ash; width: 700px;" class="container-sm mt-5  p-5 ml-auto" >
     
-  <form action="login.php" method="post" class="ml-auto">
+  <form action="login.php" method="post" style=" margin-top:100px; padding-left: 140px;">
   <div class="form-group">
     <label for="email">Email address</label>
-    <input type="email" class="form-control w-50" name="email" placeholder="Enter email">
+    <input type="email" class="form-control" style=" width: 280px; " name="email" placeholder="Enter email">
   </div>
   <div class="form-group mt-3">
     <label for="password">Password</label>
-    <input type="password" class="form-control w-50" name="password" placeholder="Password">
+    <input type="password" class="form-control" style=" width: 280px;" name="password" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-primary mt-3 w-50">Login</button>
- <a href="sign.php"  class="btn bg-success mt-3 w-50">
+  <button type="submit" class="btn btn-primary mt-3" style=" width: 280px;">Login</button>
+ <a href="sign.php"  class="btn bg-success mt-3" style=" width: 280px;">
  Sign Up
  </a>
 </form>
