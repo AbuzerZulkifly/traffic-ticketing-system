@@ -12,6 +12,7 @@ try {
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
+include "admin-header.php";
 ?>
 
 
@@ -27,36 +28,7 @@ try {
   <link rel="stylesheet" href="../style/admin.css">
 
 </head>
-<body class="bg-secondary">
-
-<header class="admin-header">
-  <a href="" class="mt-3">Admin Dashboard</a>
-  
-  <div class="logout">
-    <a href="../../registration/signup1/login.php"  class="btn btn-secondary mt-3"> Logout </a>
-  </div>
-</header>
-
-<aside>
-
-    <ul>
-      <li>
-        <a href="./add_admin.php">Add Admin</a>
-      </li>
-      <li>
-        <a href="./add_police.php">Add Police</a>
-      </li>
-      <li>
-        <a style="color: white;" href="">Fines</a>
-      </li>
-      
-      
-
-    </ul>
-//
-</aside>
-//////////////////
-<div class="main" style="padding:20px">
+<div class="main" style="padding-left:160px">
 
 <div class="container">
     
@@ -91,9 +63,9 @@ try {
                     <th>ID</th>
                     <th>Rule</th>
                     <th>Name</th>
-                    <th>license_no</th>
-                    <th>nic_no</th>
-                    <th>contact_no</th>
+                    <th>license No</th>
+                    <th>Nic No</th>
+                    <th>Contact No</th>
                 </tr>
             </thead>
             <tbody>
@@ -116,7 +88,7 @@ try {
                 }
                 
                 // SQL query based on filter
-                $sql = "SELECT * FROM fine";
+                $sql = "SELECT * FROM fine LEFT JOIN fine_sub on fine.id = fine_sub.fine_no";
                 
                 // Check if filter is set
                 if(isset($_GET['status']) && !empty($_GET['status'])) {

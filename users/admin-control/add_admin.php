@@ -27,52 +27,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     }
   }
 }
-
-
+include "admin-header.php";
 
 ?>
 
-
-
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TTS ADMIN</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="../style/admin.css">
-
-</head>
-<body class="bg-secondary">
-
-<header class="admin-header">
-  <a href="" class="mt-3">Admin Dashboard</a>
-  
-  <div class="logout">
-    <a href="../../registration/signup1/login.php"  class="btn btn-secondary mt-3"> Logout </a>
-  </div>
-</header>
-
-<aside>
-
-    <ul>
-      <li>
-        <a style="color: white;" href="">Add Admin</a>
-      </li>
-      <li>
-        <a href="./add_police.php">Add Police</a>
-      </li>
-      <li>
-        <a href="./paid_fines.php">Fines</a>
-      </li>
-  
-      
-
-    </ul>
-
-</aside>
 
 <div class="main">
 <h3>Enter the details of the new Admin</h3>

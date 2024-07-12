@@ -1,10 +1,12 @@
 <?php
+session_start();
 $login = 0;
 $invalid = 0;
 if($_SERVER['REQUEST_METHOD']=='POST'){
   include 'connect.php';
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $name = $_POST['name'];
 
   $sql = "select * from `login` where email = '$email' and password = '$password'";
   $result = mysqli_query($con,$sql);
@@ -16,18 +18,18 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       $login = 1;
       if($row["user_type"]=="user") {
         session_start();
-        $_SESSION['user_type']='user';
-        header('location:../../users/civilian.php');
+        $_SESSION['email']=$email;
+        header('location:../../users/civilian-control/civilian.php');
       }
       else if($row["user_type"]== "admin") {
-      session_start();
-      $_SESSION['user_type']='admin';
-      header('location:../../users/admin.php');
+      session_start();       
+       $_SESSION['email']=$email;
+      header('location:../../users/admin-control/admin.php');
     }
     else {
       session_start();
-      $_SESSION['user_type']='police';
-      header('location:../../users/police.php');
+      $_SESSION['email']=$email;
+      header('location:../../users/police-control/police.php');
     }
   }
     else{
@@ -83,6 +85,10 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   <div class="form-group mt-3">
     <label for="password">Password</label>
     <input type="password" class="form-control" style=" width: 280px;" name="password" placeholder="Password">
+  </div>
+  
+  <div class="form-group mt-3">
+    <input type="text" class="form-control" style=" width: 280px;" name="name" hidden>
   </div>
   <button type="submit" class="btn btn-primary mt-3" style=" width: 280px;">Login</button>
  <a href="sign.php"  class="btn bg-success mt-3" style=" width: 280px;">

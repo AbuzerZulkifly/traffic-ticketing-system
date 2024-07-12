@@ -1,51 +1,76 @@
-*
-{
+*{
   margin: 0;
   padding: 0;
 }
 
-
-ul{
-  background-color: cadetblue;
-  height: 100%;
-  width: 11%;
-  position: fixed;
-  padding-top: 5%;
-  text-align: center;
+li, ul, a{
+  list-style: none;
+  font: bolder;
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  
+}
+ li :hover{
+ color: white;
 }
 
-ul li {
+.menu-bar{
+  background-color: rgb(128, 128, 243);
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1150px 30px 10px 50px;
+  column-gap: 50px;
+  padding-left: 30px;
+  z-index: 5;
+  
+}
+.menu-bar div{
+  margin-top: 35px;
+}
+.menu-bar ul {
 
   list-style: none;
-  padding-bottom: 30%;
-
 
 }
 
-a
-{
-  text-decoration: none;
-  font-weight: bold;
+.side-bar{
+  background-color: cadetblue;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 100px;
+  width: 11%;
+  z-index: 3;
+  padding-top: 3%;
+  padding-left: 1%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
   font-size: larger;
-  color: rgb(0, 0, 0);
+
 }
 
-a:hover {
-  color: white;
-}
-.admin-header {
-  background-color: rgb(128, 128, 243);
-  line-height: 120px;
-  padding-left: 20px;
+.main{
+  padding-top: 3%;
+  padding-left: 11%;
 }
 
-.logout {
-  float: right;
-  padding-right: 20px;
-  margin-top: 25px;
+.user-menu{
+  position: relative;
+  
+  
 }
-
-.main {
-  margin-left: 14%;
-  margin-top: 2%;
+.dropdown{
+  display: none;
 }
+.user-menu:hover .dropdown{
+  display: block;
+  position: absolute;
+  top: 5;
+  left: -50;
+  font-weight: lighter;
+}
+ .dropdown{}
