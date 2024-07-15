@@ -1,5 +1,7 @@
 <?php 
-session_start()
+session_start();
+$userid = $_SESSION['email'];
+include '../../registration/signup1/connect.php';
 ?>
 <html lang="en">
 <head>
@@ -8,10 +10,6 @@ session_start()
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
   <link rel="stylesheet" href="../style/admin.css?v=<?php echo time(); ?>">
 </head>
 <body class="bg-secondary">
@@ -19,7 +17,7 @@ session_start()
 <div class="menu-bar">
 <ul>
   <div>
-    <li><a href="#">ADMIN</a></li>
+    <li><a href="#">CIVILIAN</a></li>
   </div>  
 </ul>
 
@@ -29,10 +27,10 @@ session_start()
   </div>
 </ul>
 
-<ul style="margin-left:40px">
+<ul>
   <div class="user-menu  me-1">
     <li>
-      <a href="" class="btn btn-success">User</a>
+      <a href="" class="btn btn-success">Nic</a>
     </li>
   
  <div class="dropdown">
@@ -51,7 +49,7 @@ session_start()
 <div>    
   <ul>
     <li>
-      <a href="add_admin.php">Add Admin</a>
+      <a href="fine.php">Check Fine</a>
     </li>
   </ul>
 </div>
@@ -59,22 +57,13 @@ session_start()
 <div>    
   <ul>
     <li>
-      <a href="add_police.php">Add Police</a>
-    </li>
-  </ul>
-</div>
-     
-<div>    
-  <ul>
-    <li>
-      <a href="paid_fines.php">Fines</a>
+      <a href="payfine.php">Pay Fine</a>
     </li>
   </ul>
 </div>
 </div>
-
 <div class="main">
-  asd
+  
 </div>
 </body>
 </html>

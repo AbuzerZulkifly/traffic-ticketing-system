@@ -6,7 +6,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   include 'connect.php';
   $f_name = $_POST['f_name'];
   $l_name = $_POST['l_name'];
-  $email = $_POST['email'];
   $password = $_POST['password'];
   $nic_no = $_POST['nic_no'];
   $license_no = $_POST['license_no'];
@@ -16,7 +15,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $empty = 1; 
   }
   else {
-  $sql = "select * from `login` where email = '$email' or nic_no = '$nic_no' or license_no = '$license_no'";
+  $sql = "select * from `login` where nic_no = '$nic_no' or license_no = '$license_no'";
   $result = mysqli_query($con,$sql);
   if ($result) {
     $num=mysqli_num_rows($result);
@@ -24,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       $user =1;
     }
     else {
-      $sql = "insert into `login` (f_name,l_name,email,password,nic_no,license_no,contact_no) Values ('$f_name','$l_name','$email','$password','$nic_no','$license_no','$contact_no')";
+      $sql = "insert into `login` (f_name,l_name,email,password,nic_no,license_no,contact_no) Values ('$f_name','$l_name','$password','$nic_no','$license_no','$contact_no')";
       $result = mysqli_query($con,$sql);
 
       if($result) {
@@ -94,18 +93,6 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <input type="name" class="form-control w-50" placeholder="Enter Your Last Name" name="l_name">
   </div>
 
-
-  
-  <div class="col-md-5">
-    <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control w-50" placeholder="Enter Your Email" name="email">
-  </div>
-
-  <div class=" col-md-5">
-    <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control w-50" placeholder="Enter Your Password" name="password">
-  </div>
-
   <div class="col-md-5">
     <label for="name" class="form-label">NIC Number</label>
     <input type="name" class="form-control w-50" placeholder="Enter Your NIC Number" name="nic_no">
@@ -121,6 +108,11 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <input type="number" class="form-control w-50" placeholder="Enter Your Contact Number" name="contact_no">
   </div>
 
+  
+  <div class=" col-md-5">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control w-50" placeholder="Enter Your Password" name="password">
+  </div>
 
 
 <div class="col-md-20 mb-3">  

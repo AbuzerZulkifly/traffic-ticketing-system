@@ -32,8 +32,7 @@ include "admin-header.php";
 ?>
 
 
-<div class="main">
-<h3>Enter the details of the new Admin</h3>
+<div class="main" style="margin-left:20px">
 <?php
   if($success) {
     echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -49,8 +48,10 @@ include "admin-header.php";
   ';
   }
   ?>
+<h3>Enter the details of the new Admin</h3>
 
-  <div class="container-sm mt-5 p-5 ml-auto">
+
+  <div class="container-sm mt-3 ml-auto">
     
   <form action="add_admin.php" method="post" class="ml-auto">
   <div class="form-group">

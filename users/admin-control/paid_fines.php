@@ -1,17 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "signup";
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // Set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-} catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+include '../../registration/signup1/connect.php';
 include "admin-header.php";
 ?>
 
@@ -70,10 +59,6 @@ include "admin-header.php";
             </thead>
             <tbody>
                 <?php
-                // PHP code for database connection and data retrieval
-                // Assume $conn is your database connection object
-                
-                // Your database connection code goes here
                 $servername = "localhost";
                 $username = "root";
                 $password = "";

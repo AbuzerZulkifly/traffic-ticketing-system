@@ -26,7 +26,7 @@ session_start()
 <div class="menu-bar">
 <ul>
   <div>
-    <li><a href="#">POLICE DASHBOARD</a></li>
+    <li><a href="#">POLICE</a></li>
   </div>  
 </ul>
 
@@ -39,7 +39,7 @@ session_start()
 <ul>
   <div class="user-menu  me-1">
     <li>
-      <a href="" class="btn btn-success">User</a>
+      <a href="" class="btn btn-success">Badge No</a>
     </li>
   
  <div class="dropdown">

@@ -9,7 +9,7 @@ include "police-header.php";
        
          <h2>Search for already existing fine:</h2>
                  
-                 <input type="text" class="form-control w-50" name="search"  placeholder="Enter NIC NO">
+                 <input type="text" class="form-control w-50" name="search"  placeholder="Enter NIC NO or Vehicle NO">
                  <button class="btn btn-primary mt-4" name="submit">Filter</button>
                  
        
@@ -22,7 +22,7 @@ include "police-header.php";
           
           if(isset($_POST['submit'])){
           $search = $_POST['search'];
-          $sql = "SELECT * FROM fine LEFT JOIN fine_sub on fine.id = fine_sub.fine_no where nic_no = '$search'";
+          $sql = "SELECT * FROM fine LEFT JOIN fine_sub on fine.id = fine_sub.fine_no where (nic_no = '$search' or vehicle_no = '$search') and payment = 'pending'";
           $result = mysqli_query($con,$sql);
 
           if($result){
@@ -37,7 +37,7 @@ include "police-header.php";
               <th>Rule</th>
               <th>Amount</th>
               ';
-              $row = mysqli_fetch_assoc($result);
+              while($row = mysqli_fetch_assoc($result)){
               echo '<tbody>
               <tr>
               <td>'.$row['name'].'</td>
@@ -48,7 +48,7 @@ include "police-header.php";
               <td>'.$row['amount'].'</td>
               </tr>
               </tbody>';
-            }
+              }}
             else{
               echo '<h2>This Civilian has no pending fines</h2>';
             }

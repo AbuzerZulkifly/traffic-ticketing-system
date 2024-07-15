@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   $password = $_POST['password'];
   $name = $_POST['name'];
 
-  $sql = "select * from `login` where email = '$email' and password = '$password'";
+  $sql = "select * from `login` where (email = '$email' or nic_no = '$email' or badge_no = '$email' ) and password = '$password'";
   $result = mysqli_query($con,$sql);
   $row = mysqli_fetch_array($result);
   
@@ -19,17 +19,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       if($row["user_type"]=="user") {
         session_start();
         $_SESSION['email']=$email;
-        header('location:../../users/civilian-control/civilian.php');
+        header('location:../../users/civilian-control/fine.php');
       }
       else if($row["user_type"]== "admin") {
       session_start();       
        $_SESSION['email']=$email;
-      header('location:../../users/admin-control/admin.php');
+      header('location:../../users/admin-control/add_admin.php');
     }
     else {
       session_start();
       $_SESSION['email']=$email;
-      header('location:../../users/police-control/police.php');
+      header('location:../../users/police-control/check_civilian.php');
     }
   }
     else{
@@ -79,8 +79,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     
   <form action="login.php" method="post" style=" margin-top:100px; padding-left: 140px;">
   <div class="form-group">
-    <label for="email">Email address</label>
-    <input type="email" class="form-control" style=" width: 280px; " name="email" placeholder="Enter email">
+    <label for="email">Enter Your ID</label>
+    <input type="text" class="form-control" style=" width: 280px; " name="email" placeholder="Enter ID">
   </div>
   <div class="form-group mt-3">
     <label for="password">Password</label>
